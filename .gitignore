@@ -24,6 +24,11 @@ Data/
 *.rar
 *.7z
 
+# Large model outputs and artifacts
+outputs/
+*.mask.png
+
+
 # Model Weights (store externally or via Git LFS)
 *.pth
 *.pt
