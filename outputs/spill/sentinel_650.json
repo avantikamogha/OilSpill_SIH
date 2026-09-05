@@ -1,0 +1,12 @@
+{
+  "image_id": "sentinel_650",
+  "detected": true,
+  "confidence": 0.85,
+  "mask_path": "outputs/spill/sentinel_650_mask.png",
+  "bbox": [
+    60,
+    2,
+    256,
+    256
+  ]
+}
