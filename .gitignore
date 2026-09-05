@@ -19,3 +19,5 @@ outputs/geospatial/*.png
 
 # Env/secrets
 .env
+
+*.nc
