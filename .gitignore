@@ -1,6 +1,36 @@
+# Python & Environment
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+.env
+venv/
+env/
+ENV/
+
+# OS Junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Jupyter Notebook Cache
+.ipynb_checkpoints/
+
+# Raw Datasets & Archive Files
 data/
 Data/
 *.zip
-.DS_Store
-__pycache__/
-.ipynb_checkpoints/
+*.tar.gz
+*.rar
+*.7z
+
+# Model Weights (store externally or via Git LFS)
+*.pth
+*.pt
+*.bin
+*.onnx
+*.h5
+
+# Local IDEs
+.vscode/
+.idea/
