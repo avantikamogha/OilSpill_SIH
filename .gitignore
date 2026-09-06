@@ -21,3 +21,20 @@ outputs/geospatial/*.png
 .env
 
 *.nc
+# Model artifacts & checkpoints
+*.pth
+*.pt
+*.onnx
+models/*.pth
+
+# Large intermediate inference data
+outputs/
+!outputs/spill/all_detection.json
+data
+*.mask.png
+
+# Secrets & local environments
+.env
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
