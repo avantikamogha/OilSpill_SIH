@@ -63,3 +63,31 @@ __pycache__/
 *.ipynb
 !AIS/notebooks/01_ais_cleaning.ipynb
 !AIS/data/processed/01_ais_cleaning.ipynb
+# AIS datasets
+data/raw/*
+data/processed/*.csv
+
+# Generated outputs
+outputs/*
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+.venv/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+data/
+Data/
+*.zip
+.DS_Store
+_pycache_/
+.ipynb_checkpoints/

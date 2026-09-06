@@ -1,142 +1,122 @@
-# OilTrace (Demo name) — Explainable Maritime Pollution Forensics
+# OilTrace — Explainable Maritime Pollution Forensics
 
-An end-to-end forensic pipeline that detects oil spills from satellite
-imagery, reconstructs where they came from using ocean drift physics, and
-ranks the vessels most likely responsible — with full evidence transparency
-at every step.
+An end-to-end forensic pipeline that detects oil spills from satellite imagery, reconstructs their probable origin using ocean drift modelling, and ranks vessels based on evidence from AIS data.
 
-Built for Smart India Hackathon. This is a working prototype demonstrating
-the complete investigative pipeline on a real controlled scenario — not a
-production system, and not a legal attribution tool.
+Built for **Smart India Hackathon 2026**, OilTrace is a working prototype demonstrating the complete investigative pipeline on a controlled real-data scenario. It is not a production system or a legal attribution tool.
 
 ---
 
 ## The Problem
 
-Illegal oil discharges at sea are hard to catch because:
-- Spills drift with currents and wind — where you see it isn't where it started
-- AIS data is imperfect — gaps, spoofing, and coverage limits are common
-- Existing tools stop at detection. Nobody closes the loop to "who did this?"
+Illegal oil discharges at sea are difficult to investigate because:
 
-OilTrace closes that loop — going from a satellite pixel to a ranked,
-evidence-backed list of suspect vessels.
+* Oil spills drift with currents and wind, so the visible location may differ from the original discharge location.
+* AIS data can contain gaps, coverage limitations, and other inconsistencies.
+* Detection alone does not answer the critical investigative question: **which vessel may be responsible?**
+
+OilTrace addresses this gap by connecting satellite-based detection with drift reconstruction and vessel intelligence to produce a ranked, evidence-backed list of investigation candidates.
 
 ---
 
 ## How It Works
 
-```
-SATELLITE IMAGE
-        ↓
-Oil Spill Detection            (M1 — Computer Vision)
-        ↓
-Spill Characterisation         (M2 — Geospatial Analysis)
-        ↓
-Drift Simulation                (M3 — Oceanography)
-     ↙           ↘
-BACKTRACKING     FORECAST
-     ↓
+```text
+Satellite Imagery
+       ↓
+Oil Spill Detection
+       ↓
+Spill Characterisation
+       ↓
+Drift Simulation
+   ↙           ↘
+Backtracking   Forecast
+   ↓
 Probable Origin Zone
-     ↓
-AIS Correlation                 (M4 — Vessel Intelligence)
-        ↓
-Vessel Attribution              (M5 — Evidence Scoring)
-        ↓
-Ranked Suspects + Evidence
-        ↓
-Investigation Dashboard         (M6)
+       ↓
+AIS Correlation
+       ↓
+Evidence Scoring
+       ↓
+Ranked Vessel Candidates
+       ↓
+Investigation Dashboard
 ```
 
-The output is never a verdict — it's a ranked, explainable investigation
-lead, with a full evidence breakdown behind every score.
+The system does not produce a definitive verdict. It generates an **explainable investigation lead**, with the evidence contributing to each vessel's ranking.
 
 ---
 
-## What's Working So Far
+## Current Progress
 
-### Detection (M1)
-- Model: U-Net with ResNet-18 backbone
-- Dataset: Deep-SAR Oil Spill Segmentation (refined)
-- Validation results: Dice 0.76, IoU 0.65 (more than 2x the baseline)
-- Outputs binary masks, GeoJSON vector shapes, and confidence-scored JSON
-  metadata for every scene
-- Look-alike filtering via area thresholding and confidence cutoffs to
-  reduce false positives from calm seas / biogenic slicks
+### Detection
 
-### Geospatial Characterisation (M2)
-- Converts every detected slick into real-world geometry: centroid, area,
-  perimeter, length, width, orientation
-- Verified against raw detection masks for shape accuracy
-- Outputs standardised GeoJSON + JSON, ready for drift modelling and
-  attribution scoring
+* U-Net with a ResNet-18 backbone
+* Deep-SAR Oil Spill Segmentation (refined) dataset
+* Validation: **Dice 0.76, IoU 0.65**
+* Binary segmentation masks with GeoJSON and JSON metadata outputs
+* Confidence-based filtering and area thresholding to reduce false positives
 
-### Drift, AIS, Attribution, Dashboard
-In progress — see module folders for current status.
+### Geospatial Characterisation
+
+* Converts detected slicks into real-world geometry
+* Calculates centroid, area, perimeter, length, width, and orientation
+* Validated against raw detection masks
+* Outputs standardised GeoJSON and JSON for downstream modules
+
+### Drift, AIS, Attribution & Dashboard
+
+Currently in development.
 
 ---
 
 ## Demo Scenario
 
-Region: Arabian Sea corridor off Mumbai (72.50°E, 18.80°N)
-Dataset: 1,615 SAR scenes processed, 1,548 detected slicks, 67 clean water
-controls
+**Region:** Arabian Sea corridor off Mumbai
+**Coordinates:** 72.50°E, 18.80°N
+**SAR scenes processed:** 1,615
+**Detected slicks:** 1,548
+**Clean-water controls:** 67
+
+The controlled scenario is used to demonstrate the complete investigative workflow and module integration.
 
 ---
 
 ## Tech Stack
 
-| Layer | Tools |
-|---|---|
-| Detection | PyTorch, U-Net, OpenCV |
-| Geospatial | Shapely, GeoPandas-style geometry, rasterio, GeoPy |
-| Coordinates | WGS84 / EPSG:4326, [lon, lat] order throughout |
-| Time | UTC ISO-8601 |
-| Data exchange | GeoJSON + JSON between every module |
+| Layer               | Technologies                        |
+| ------------------- | ----------------------------------- |
+| Detection           | PyTorch, U-Net, OpenCV              |
+| Geospatial          | Shapely, GeoPandas, Rasterio, GeoPy |
+| Coordinates         | WGS84 / EPSG:4326                   |
+| Time                | UTC ISO-8601                        |
+| Data Exchange       | GeoJSON, JSON                       |
+| Vessel Intelligence | AIS data                            |
 
 ---
 
-## Repo Structure
+## Team Structure
 
-```
-OilSpill_SIH/
-├── AIS/                    Vessel data & processing
-├── docs/
-├── modules/
-│   ├── detection/          M1 — Oil spill detection model
-│   └── geospatial/         M2 — Characterisation & metrics
-├── notebooks/
-└── outputs/
-    ├── spill/              Detection masks, geojsons, metadata
-    └── geospatial/         Characterised spill metrics
-```
+| Member | Module                         |
+| ------ | ------------------------------ |
+| M1     | Oil Spill Detection            |
+| M2     | Geospatial Characterisation    |
+| M3     | Ocean Drift Modelling          |
+| M4     | AIS / Vessel Intelligence      |
+| M5     | Evidence Scoring & Attribution |
+| M6     | Investigation Dashboard        |
 
 ---
 
-## Running the Geospatial Module
+## Why It Matters
 
-```bash
-python -m venv venv
-venv\Scripts\activate
-pip install -r modules/geospatial/requirements.txt
+Operational systems such as EMSA's CleanSeaNet demonstrate that satellite, oceanographic, and AIS data can support real-world maritime pollution investigations.
 
-# Characterise the top-confidence detection
-python modules/geospatial/process_real_detections.py \
-    --detections outputs/spill/all_detections.json --top
+OilTrace focuses on building a **transparent, explainable, and modular prototype** that connects these stages into a single investigative workflow using publicly accessible data.
 
-# Visualize the result
-python modules/geospatial/visualize_spill.py outputs/geospatial/spill_metadata.json
-```
+The current prototype establishes the core architecture. Future development will focus on improving detection accuracy, expanding data coverage, strengthening drift and attribution models, and increasing system robustness.
 
 ---
 
-## Why This Matters
+## Disclaimer
 
-Operational systems like EMSA's CleanSeaNet already prove satellite and AIS
-fusion works in the real world, including cases where it directly led to
-prosecution. OilTrace's contribution isn't inventing a new sensor or
-dataset; it's a transparent, explainable, and modular pipeline that shows
-its reasoning at every step, built openly on public data from the ground up.
-
-This prototype proves the architecture works end-to-end. The next phase
-focuses on model accuracy, wider data coverage, and robustness, not on
-inventing the pipeline from scratch.
+OilTrace is a research and demonstration prototype. Vessel rankings represent **investigation candidates based on available evidence** and should not be interpreted as proof of responsibility or used as an automated legal or enforcement decision.
