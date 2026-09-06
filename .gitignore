@@ -19,6 +19,28 @@ outputs/geospatial/*.png
 
 # Env/secrets
 .env
+# Python
+__pycache__/
+*.pyc
+venv/
+env/
+.venv/
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project outputs (regenerate-able, don't clutter repo)
+outputs/geospatial/*.png
+*.tif
+
+# Env/secrets
+.env
+
 
 *.nc
 # Model artifacts & checkpoints
