@@ -29,7 +29,7 @@ models/*.pth
 
 # Large intermediate inference data
 outputs/
-!outputs/spill/all_detection.json
+!outputs/spill/all_detections.json
 data
 *.mask.png
 
