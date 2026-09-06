@@ -1,23 +1,28 @@
+# AIS datasets
+data/raw/*
+data/processed/*.csv
+
+# Generated outputs
+outputs/*
+
 # Python
 __pycache__/
 *.pyc
+
+# Virtual environment
 venv/
-env/
 .venv/
 
-# Editor
+# VS Code
 .vscode/
-.idea/
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Project outputs (regenerate-able, don't clutter repo)
-outputs/geospatial/*.png
-*.tif
-
-# Env/secrets
-.env
-
-*.nc
+data/
+Data/
+*.zip
+.DS_Store
+_pycache_/
+.ipynb_checkpoints/
