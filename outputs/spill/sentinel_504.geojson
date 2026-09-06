@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "spill_id": "sentinel_504",
+        "confidence": 0.77
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              72.5,
+              19.15
+            ],
+            [
+              72.5,
+              18.801367
+            ],
+            [
+              72.845898,
+              18.801367
+            ],
+            [
+              72.847266,
+              19.15
+            ],
+            [
+              72.5,
+              19.15
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

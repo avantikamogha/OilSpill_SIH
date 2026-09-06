@@ -1,0 +1,12 @@
+{
+  "image_id": "palsar_640",
+  "detected": true,
+  "confidence": 0.8,
+  "mask_path": "outputs/spill/palsar_640_mask.png",
+  "bbox": [
+    0,
+    88,
+    81,
+    160
+  ]
+}
