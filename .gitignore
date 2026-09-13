@@ -1,4 +1,3 @@
-
 # Python & Environment
 __pycache__/
 *.py[cod]
@@ -40,22 +39,3 @@ outputs/
 # Local IDEs
 .vscode/
 .idea/
-=======
-AIS/data/raw/*
-AIS/data/processed/*.csv
-AIS/data/processed/ais_sample.csv
-AIS/data/processed/
-
-__pycache__/
-*.pyc
-venv/
-env/
-.venv/
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-.env
-.env.local
-outputs/geospatial/*.png
-

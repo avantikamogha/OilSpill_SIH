@@ -1,5 +1,0 @@
-opencv-python-headless
-numpy
-shapely
-geopy
-rasterio

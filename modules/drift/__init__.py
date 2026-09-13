@@ -1,4 +1,0 @@
-from .pipeline import DriftPipeline
-
-__version__ = "1.0.0"
-__all__ = ["DriftPipeline"]
