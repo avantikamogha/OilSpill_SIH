@@ -1,0 +1,10 @@
+albumentations
+certifi
+numpy
+pandas
+opencv-python
+pymongo
+python-dotenv
+segmentation-models-pytorch
+supabase
+torch
